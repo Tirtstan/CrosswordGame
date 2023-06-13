@@ -325,6 +325,7 @@
             Name = "frmCrossword";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Crossword Game";
+            Activated += frmCrossword_Activated;
             ResumeLayout(false);
             PerformLayout();
         }
