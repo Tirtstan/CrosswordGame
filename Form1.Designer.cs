@@ -32,8 +32,6 @@
             btnFinished = new Button();
             btnShowHint = new Button();
             btnCheckGuesses = new Button();
-            lblClues = new Label();
-            rtxtOutput = new RichTextBox();
             txt01 = new TextBox();
             txt02 = new TextBox();
             txt03 = new TextBox();
@@ -58,6 +56,8 @@
             txt42 = new TextBox();
             txt41 = new TextBox();
             txt40 = new TextBox();
+            cmbClues = new ComboBox();
+            lblCompletionMessage = new Label();
             SuspendLayout();
             // 
             // txt00
@@ -80,7 +80,7 @@
             // btnShowHint
             // 
             btnShowHint.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnShowHint.Location = new Point(247, 32);
+            btnShowHint.Location = new Point(222, 30);
             btnShowHint.Name = "btnShowHint";
             btnShowHint.Size = new Size(125, 34);
             btnShowHint.TabIndex = 2;
@@ -90,34 +90,12 @@
             // btnCheckGuesses
             // 
             btnCheckGuesses.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnCheckGuesses.Location = new Point(247, 88);
+            btnCheckGuesses.Location = new Point(222, 88);
             btnCheckGuesses.Name = "btnCheckGuesses";
             btnCheckGuesses.Size = new Size(125, 34);
             btnCheckGuesses.TabIndex = 3;
             btnCheckGuesses.Text = "Check Guesses";
             btnCheckGuesses.UseVisualStyleBackColor = true;
-            // 
-            // lblClues
-            // 
-            lblClues.AutoSize = true;
-            lblClues.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblClues.Location = new Point(247, 185);
-            lblClues.Name = "lblClues";
-            lblClues.Size = new Size(48, 21);
-            lblClues.TabIndex = 4;
-            lblClues.Text = "Clues";
-            // 
-            // rtxtOutput
-            // 
-            rtxtOutput.BackColor = Color.FromArgb(224, 224, 224);
-            rtxtOutput.BorderStyle = BorderStyle.None;
-            rtxtOutput.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            rtxtOutput.Location = new Point(247, 222);
-            rtxtOutput.Name = "rtxtOutput";
-            rtxtOutput.ReadOnly = true;
-            rtxtOutput.Size = new Size(391, 130);
-            rtxtOutput.TabIndex = 5;
-            rtxtOutput.Text = "";
             // 
             // txt01
             // 
@@ -287,11 +265,33 @@
             txt40.Size = new Size(27, 23);
             txt40.TabIndex = 25;
             // 
+            // cmbClues
+            // 
+            cmbClues.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cmbClues.FormattingEnabled = true;
+            cmbClues.Location = new Point(222, 185);
+            cmbClues.Name = "cmbClues";
+            cmbClues.Size = new Size(434, 29);
+            cmbClues.TabIndex = 30;
+            cmbClues.Text = "Clues";
+            // 
+            // lblCompletionMessage
+            // 
+            lblCompletionMessage.AutoSize = true;
+            lblCompletionMessage.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblCompletionMessage.Location = new Point(41, 242);
+            lblCompletionMessage.Name = "lblCompletionMessage";
+            lblCompletionMessage.Size = new Size(156, 21);
+            lblCompletionMessage.TabIndex = 31;
+            lblCompletionMessage.Text = "Completion Message";
+            // 
             // frmCrossword
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(668, 388);
+            Controls.Add(lblCompletionMessage);
+            Controls.Add(cmbClues);
             Controls.Add(txt44);
             Controls.Add(txt43);
             Controls.Add(txt42);
@@ -316,8 +316,6 @@
             Controls.Add(txt03);
             Controls.Add(txt02);
             Controls.Add(txt01);
-            Controls.Add(rtxtOutput);
-            Controls.Add(lblClues);
             Controls.Add(btnCheckGuesses);
             Controls.Add(btnShowHint);
             Controls.Add(btnFinished);
@@ -336,8 +334,6 @@
         private Button btnFinished;
         private Button btnShowHint;
         private Button btnCheckGuesses;
-        private Label lblClues;
-        private RichTextBox rtxtOutput;
         private TextBox txt01;
         private TextBox txt02;
         private TextBox txt03;
@@ -362,5 +358,7 @@
         private TextBox txt42;
         private TextBox txt41;
         private TextBox txt40;
+        private ComboBox cmbClues;
+        private Label lblCompletionMessage;
     }
 }
