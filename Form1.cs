@@ -1,3 +1,5 @@
+using System;
+
 namespace CrosswordGame
 {
     public partial class frmCrossword : Form
@@ -14,9 +16,9 @@ namespace CrosswordGame
         private string[] clues = new string[6]
         {
             "Across     LARGE BROWN MAMMAL",
-            "Across     FIRST POSITIVE ODD NUMBER",
+            "Across     A SINGLE DIGIT NUMBER",
             "Across     A SMALL PIECE OF HOT COAL",
-            "Down       TO WATCH A LOT OF SOMTHING",
+            "Down       TO WATCH A LOT OF SOMETHING",
             "Down       FASTER THAN WALKING",
             "Down       WE USE IT TO HEAR"
         };
