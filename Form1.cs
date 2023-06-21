@@ -49,16 +49,19 @@ namespace CrosswordGame
 
         private void ShowHint()
         {
-            int row, column;
+            int row,
+                column;
             do
             {
                 Random num1 = new Random();
                 Random num2 = new Random();
 
                 column = num1.Next(0, 5);
-                row = num2.Next(0, 5);                
-
-            } while (!string.IsNullOrEmpty(textBoxes[row, column].Text) || textBoxes[row, column].BackColor == Color.Black);
+                row = num2.Next(0, 5);
+            } while (
+                !string.IsNullOrEmpty(textBoxes[row, column].Text)
+                || textBoxes[row, column].BackColor == Color.Black
+            );
 
             textBoxes[row, column].BackColor = Color.Yellow;
             textBoxes[row, column].Text = Crossword[row, column];
