@@ -5,20 +5,20 @@ namespace CrosswordGame
         private TextBox[,] textBoxes = new TextBox[5, 5];
         private string[,] Crossword = new string[5, 5]
         {
-            { "L", "", "", "", "" },
-            { "O", "U", "T", "", "T" },
-            { "W", "", "E", "", "O" },
-            { "", "", "S", "E", "W" },
-            { "S", "I", "T", "", "N" }
+            { "B", "E", "A", "R", "" },
+            { "I", "", "", "U", "" },
+            { "N", "", "O", "N", "E" },
+            { "G", "", "", "", "A" },
+            { "E", "M", "B", "E", "R" }
         };
         private string[] clues = new string[6]
         {
-            "Across     NOT IN",
-            "Across     TO JOIN TWO PIECES OF MATERIAL WITH COTTON",
-            "Across     NOT LYING DOWN OR STANDING",
-            "Down       NOT HIGH",
-            "Down       NOT AN EXAM",
-            "Down       SMALL CITY"
+            "Across     LARGE BROWN MAMMAL",
+            "Across     FIRST POSITIVE ODD NUMBER",
+            "Across     A SMALL PIECE OF HOT COAL",
+            "Down       TO WATCH A LOT OF SOMTHING",
+            "Down       FASTER THAN WALKING",
+            "Down       WE USE IT TO HEAR"
         };
 
         public frmCrossword()
