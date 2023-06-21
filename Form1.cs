@@ -22,6 +22,8 @@ namespace CrosswordGame
             "Down       FASTER THAN WALKING",
             "Down       WE USE IT TO HEAR"
         };
+        int row;
+        int column;
 
         public frmCrossword()
         {
@@ -49,8 +51,6 @@ namespace CrosswordGame
 
         private void ShowHint()
         {
-            int row,
-                column;
             do
             {
                 Random num1 = new Random();
@@ -94,6 +94,7 @@ namespace CrosswordGame
                 for (int j = 0; j < Crossword.GetLength(1); j++)
                 {
                     string guess = textBoxes[i, j].Text.ToUpper();
+                    textBoxes[i, j].Text = guess;
                     if (!string.IsNullOrEmpty(guess))
                     {
                         if (guess == Crossword[i, j])
@@ -109,6 +110,52 @@ namespace CrosswordGame
             }
         }
 
+        private void Finish()
+        {
+            for (int i = 0; i < Crossword.GetLength(0); i++)
+            {
+                for (int j = 0; j < Crossword.GetLength(1); j++)
+                {
+                    string guess = textBoxes[i, j].Text.ToUpper();
+                    textBoxes[i, j].Text = guess;
+                    if (textBoxes[i, j].BackColor != Color.Black)
+                    {
+                        if (guess == Crossword[i, j])
+                        {
+                            textBoxes[i, j].BackColor = Color.LightGreen;
+                        }
+                        else if (guess != Crossword[i, j])
+                        {
+                            textBoxes[i, j].BackColor = Color.PaleVioletRed;
+                        }
+                    }
+                }
+            }
+
+            DetermineOutcome();
+        }
+
+        private void DetermineOutcome()
+        {
+            bool isWinner = true;
+            for (int i = 0; i < Crossword.GetLength(0); i++)
+            {
+                for (int j = 0; j < Crossword.GetLength(1); j++)
+                {
+                    if (textBoxes[i, j].BackColor == Color.PaleVioletRed)
+                    {
+                        isWinner = false;
+                        break;
+                    }
+                }
+            }
+
+            lblCompletionMessage.Text = isWinner ? "Congratulations!" : "Incorrect Submission";
+            btnShowHint.Enabled = false;
+            btnCheckGuesses.Enabled = false;
+            btnFinished.Enabled = false;
+        }
+
         private void btnCheckGuesses_Click(object sender, EventArgs e)
         {
             ChangeTextboxStatus();
@@ -121,6 +168,11 @@ namespace CrosswordGame
         private void btnShowHint_Click(object sender, EventArgs e)
         {
             ShowHint();
+        }
+
+        private void btnFinished_Click(object sender, EventArgs e)
+        {
+            Finish();
         }
     }
 }

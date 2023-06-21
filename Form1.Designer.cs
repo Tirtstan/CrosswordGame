@@ -79,6 +79,7 @@
             btnFinished.TabIndex = 1;
             btnFinished.Text = "Finished";
             btnFinished.UseVisualStyleBackColor = true;
+            btnFinished.Click += btnFinished_Click;
             // 
             // btnShowHint
             // 
