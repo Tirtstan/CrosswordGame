@@ -47,12 +47,15 @@ namespace CrosswordGame
 
         private void ChangeTextboxStatus()
         {
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < Crossword.GetLength(0); i++)
             {
-                for (int j = 0; j < 5; j++)
+                for (int j = 0; j < Crossword.GetLength(1); j++)
                 {
                     if (string.IsNullOrEmpty(Crossword[i, j]))
+                    {
+                        textBoxes[i, j].ReadOnly = true;
                         textBoxes[i, j].BackColor = Color.Black;
+                    }
                 }
             }
         }
