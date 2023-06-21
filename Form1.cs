@@ -47,6 +47,7 @@ namespace CrosswordGame
 
         private void ChangeTextboxStatus()
         {
+            // sets relevant text boxes to black or white
             for (int i = 0; i < Crossword.GetLength(0); i++)
             {
                 for (int j = 0; j < Crossword.GetLength(1); j++)
@@ -58,16 +59,41 @@ namespace CrosswordGame
                     }
                     else
                     {
+                        textBoxes[i, j].ReadOnly = false;
+                        textBoxes[i, j].BackColor = Color.White;
                         textBoxes[i, j].MaxLength = 1;
+                    }
+                }
+            }
+
+            // checks if entered info is correct
+            for (int i = 0; i < Crossword.GetLength(0); i++)
+            {
+                for (int j = 0; j < Crossword.GetLength(1); j++)
+                {
+                    string guess = textBoxes[i, j].Text.ToUpper();
+                    if (!string.IsNullOrEmpty(guess))
+                    {
+                        if (guess == Crossword[i, j])
+                        {
+                            textBoxes[i, j].BackColor = Color.Green;
+                        }
+                        else if (guess != Crossword[i, j])
+                        {
+                            textBoxes[i, j].BackColor = Color.Red;
+                        }
                     }
                 }
             }
         }
 
+        private void btnCheckGuesses_Click(object sender, EventArgs e)
+        {
+            ChangeTextboxStatus();
+        }
+
         #region Reference List
-
         // https://stackoverflow.com/questions/4260207/how-do-you-get-the-width-and-height-of-a-multi-dimensional-array
-
         #endregion
     }
 }
