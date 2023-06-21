@@ -70,6 +70,8 @@ namespace CrosswordGame
         private void ChangeTextboxStatus()
         {
             // sets relevant text boxes to black or white
+
+            // juFo (2013) demonstrates how...
             for (int i = 0; i < Crossword.GetLength(0); i++)
             {
                 for (int j = 0; j < Crossword.GetLength(1); j++)
@@ -161,10 +163,6 @@ namespace CrosswordGame
             ChangeTextboxStatus();
         }
 
-        #region Reference List
-        // https://stackoverflow.com/questions/4260207/how-do-you-get-the-width-and-height-of-a-multi-dimensional-array
-        #endregion
-
         private void btnShowHint_Click(object sender, EventArgs e)
         {
             ShowHint();
@@ -174,5 +172,11 @@ namespace CrosswordGame
         {
             Finish();
         }
+
+        #region Reference List
+        /*
+        juFo. 2013. How do you get the width and height of a multi-dimensional array? [duplicate] [Source code]. https://stackoverflow.com/questions/4260207/how-do-you-get-the-width-and-height-of-a-multi-dimensional-array (Accessed 21 June 2023).
+        */
+        #endregion
     }
 }
