@@ -47,6 +47,23 @@ namespace CrosswordGame
             ChangeTextboxStatus();
         }
 
+        private void ShowHint()
+        {
+            int row, column;
+            do
+            {
+                Random num1 = new Random();
+                Random num2 = new Random();
+
+                column = num1.Next(0, 5);
+                row = num2.Next(0, 5);                
+
+            } while (!string.IsNullOrEmpty(textBoxes[row, column].Text) || textBoxes[row, column].BackColor == Color.Black);
+
+            textBoxes[row, column].BackColor = Color.Yellow;
+            textBoxes[row, column].Text = Crossword[row, column];
+        }
+
         private void ChangeTextboxStatus()
         {
             // sets relevant text boxes to black or white
@@ -78,11 +95,11 @@ namespace CrosswordGame
                     {
                         if (guess == Crossword[i, j])
                         {
-                            textBoxes[i, j].BackColor = Color.Green;
+                            textBoxes[i, j].BackColor = Color.LightGreen;
                         }
                         else if (guess != Crossword[i, j])
                         {
-                            textBoxes[i, j].BackColor = Color.Red;
+                            textBoxes[i, j].BackColor = Color.PaleVioletRed;
                         }
                     }
                 }
@@ -97,5 +114,10 @@ namespace CrosswordGame
         #region Reference List
         // https://stackoverflow.com/questions/4260207/how-do-you-get-the-width-and-height-of-a-multi-dimensional-array
         #endregion
+
+        private void btnShowHint_Click(object sender, EventArgs e)
+        {
+            ShowHint();
+        }
     }
 }
