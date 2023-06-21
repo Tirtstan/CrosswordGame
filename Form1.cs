@@ -59,5 +59,11 @@ namespace CrosswordGame
                 }
             }
         }
+
+        #region Reference List
+
+        // https://stackoverflow.com/questions/4260207/how-do-you-get-the-width-and-height-of-a-multi-dimensional-array
+
+        #endregion
     }
 }
