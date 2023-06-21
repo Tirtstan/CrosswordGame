@@ -39,12 +39,7 @@ namespace CrosswordGame
                 { txt40, txt41, txt42, txt43, txt44 }
             };
 
-            // add all clues to combo box
-            for (int i = 0; i < clues.Length; i++)
-            {
-                cmbClues.Items.Add(clues[i]);
-            }
-
+            richtxtClues.Lines = clues;
             lblCompletionMessage.Text = "";
 
             ChangeTextboxStatus();
