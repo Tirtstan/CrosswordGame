@@ -43,7 +43,11 @@ namespace CrosswordGame
                 { txt40, txt41, txt42, txt43, txt44 }
             };
 
-            richtxtClues.Lines = clues;
+            for (int i = 0; i < clues.Length; i++)
+            {
+                cmbClues.Items.Add(clues[i]);
+            }
+
             lblCompletionMessage.Text = "";
 
             ChangeTextboxStatus();
@@ -51,11 +55,10 @@ namespace CrosswordGame
 
         private void ShowHint()
         {
+            Random num1 = new Random();
+            Random num2 = new Random();
             do
             {
-                Random num1 = new Random();
-                Random num2 = new Random();
-
                 column = num1.Next(0, 5);
                 row = num2.Next(0, 5);
             } while (

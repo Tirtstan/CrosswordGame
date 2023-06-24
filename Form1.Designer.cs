@@ -57,8 +57,7 @@
             txt41 = new TextBox();
             txt40 = new TextBox();
             lblCompletionMessage = new Label();
-            richtxtClues = new RichTextBox();
-            lblClues = new Label();
+            cmbClues = new ComboBox();
             SuspendLayout();
             // 
             // txt00
@@ -329,35 +328,21 @@
             lblCompletionMessage.TabIndex = 31;
             lblCompletionMessage.Text = "Completion Message";
             // 
-            // richtxtClues
+            // cmbClues
             // 
-            richtxtClues.BackColor = SystemColors.Window;
-            richtxtClues.BorderStyle = BorderStyle.None;
-            richtxtClues.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            richtxtClues.Location = new Point(222, 185);
-            richtxtClues.Name = "richtxtClues";
-            richtxtClues.ReadOnly = true;
-            richtxtClues.Size = new Size(434, 137);
-            richtxtClues.TabIndex = 32;
-            richtxtClues.Text = "";
-            // 
-            // lblClues
-            // 
-            lblClues.AutoSize = true;
-            lblClues.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblClues.Location = new Point(222, 149);
-            lblClues.Name = "lblClues";
-            lblClues.Size = new Size(48, 21);
-            lblClues.TabIndex = 33;
-            lblClues.Text = "Clues";
+            cmbClues.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cmbClues.FormattingEnabled = true;
+            cmbClues.Location = new Point(222, 185);
+            cmbClues.Name = "cmbClues";
+            cmbClues.Size = new Size(434, 29);
+            cmbClues.TabIndex = 34;
             // 
             // frmCrossword
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(668, 388);
-            Controls.Add(lblClues);
-            Controls.Add(richtxtClues);
+            Controls.Add(cmbClues);
             Controls.Add(lblCompletionMessage);
             Controls.Add(txt44);
             Controls.Add(txt43);
@@ -426,7 +411,6 @@
         private TextBox txt41;
         private TextBox txt40;
         private Label lblCompletionMessage;
-        private RichTextBox richtxtClues;
-        private Label lblClues;
+        private ComboBox cmbClues;
     }
 }
