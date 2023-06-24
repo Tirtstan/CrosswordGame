@@ -7,7 +7,7 @@ namespace CrosswordGame
         private TextBox[,] textBoxes = new TextBox[5, 5];
         private string[,] Crossword = new string[5, 5]
         {
-            { "B", "E", "A", "R", "" },
+            { "B", "E", "A", "R", "" }, // Array of the letters making up the crossword
             { "I", "", "", "U", "" },
             { "N", "", "O", "N", "E" },
             { "G", "", "", "", "A" },
@@ -15,7 +15,7 @@ namespace CrosswordGame
         };
         private string[] clues = new string[6]
         {
-            "Across     LARGE BROWN MAMMAL",
+            "Across     LARGE BROWN MAMMAL",    // The text for the clues that goes into the Cues textbox
             "Across     A SINGLE DIGIT NUMBER",
             "Across     A SMALL PIECE OF HOT COAL",
             "Down       TO WATCH A LOT OF SOMETHING",
@@ -30,11 +30,9 @@ namespace CrosswordGame
             InitializeComponent();
         }
 
-        // called on application launch
-        private void frmCrossword_Activated(object sender, EventArgs e)
+        private void frmCrossword_Activated(object sender, EventArgs e) // called on application launch
         {
-            // created on application launch due to not having access to the text boxes in global
-            textBoxes = new TextBox[5, 5]
+            textBoxes = new TextBox[5, 5]   // created on application launch due to not having access to the text boxes in global
             {
                 { txt00, txt01, txt02, txt03, txt04 },
                 { txt10, txt11, txt12, txt13, txt14 },
@@ -53,7 +51,7 @@ namespace CrosswordGame
             ChangeTextboxStatus();
         }
 
-        private void ShowHint()
+        private void ShowHint() // Method for the Show Hint Button
         {
             Random num1 = new Random();
             Random num2 = new Random();
@@ -70,10 +68,8 @@ namespace CrosswordGame
             textBoxes[row, column].Text = Crossword[row, column];
         }
 
-        private void ChangeTextboxStatus()
+        private void ChangeTextboxStatus()  // thod that sets relevant text boxes to black or white
         {
-            // sets relevant text boxes to black or white
-
             // juFo (2013) demonstrates how...
             for (int i = 0; i < Crossword.GetLength(0); i++)
             {
@@ -93,7 +89,7 @@ namespace CrosswordGame
                 }
             }
 
-            // checks if entered info is correct
+            // checks if the entered letter is correct
             for (int i = 0; i < Crossword.GetLength(0); i++)
             {
                 for (int j = 0; j < Crossword.GetLength(1); j++)
@@ -115,7 +111,7 @@ namespace CrosswordGame
             }
         }
 
-        private void Finish()
+        private void Finish()   // Method for the finish button so say whether you've won or not
         {
             for (int i = 0; i < Crossword.GetLength(0); i++)
             {
@@ -140,7 +136,7 @@ namespace CrosswordGame
             DetermineOutcome();
         }
 
-        private void DetermineOutcome()
+        private void DetermineOutcome() // Method to determine whether you've won or not
         {
             bool isWinner = true;
             for (int i = 0; i < Crossword.GetLength(0); i++)
@@ -155,7 +151,7 @@ namespace CrosswordGame
                 }
             }
 
-            lblCompletionMessage.Text = isWinner ? "Congratulations!" : "Incorrect Submission";
+            lblCompletionMessage.Text = isWinner ? "Congratulations!" : "Incorrect Submission"; // Text for your result
             btnShowHint.Enabled = false;
             btnCheckGuesses.Enabled = false;
             btnFinished.Enabled = false;
