@@ -4,7 +4,7 @@ namespace CrosswordGame
 {
     public partial class frmCrossword : Form
     {
-        private TextBox[,] textBoxes = new TextBox[5, 5];
+        private TextBox[,] textBoxes = new TextBox[5, 5]; // Parallel textbox array with all textboxes
         private string[,] Crossword = new string[5, 5]
         {
             { "B", "E", "A", "R", "" }, // Array of the letters making up the crossword
@@ -15,7 +15,7 @@ namespace CrosswordGame
         };
         private string[] clues = new string[6]
         {
-            "Across     LARGE BROWN MAMMAL",    // The text for the clues that goes into the Cues textbox
+            "Across     LARGE BROWN MAMMAL", // The text for the clues that goes into the Cues textbox
             "Across     A SINGLE DIGIT NUMBER",
             "Across     A SMALL PIECE OF HOT COAL",
             "Down       TO WATCH A LOT OF SOMETHING",
@@ -24,6 +24,7 @@ namespace CrosswordGame
         };
         int row;
         int column;
+        bool hasAskedForHint = false;
 
         public frmCrossword()
         {
@@ -32,7 +33,7 @@ namespace CrosswordGame
 
         private void frmCrossword_Activated(object sender, EventArgs e) // called on application launch
         {
-            textBoxes = new TextBox[5, 5]   // created on application launch due to not having access to the text boxes in global
+            textBoxes = new TextBox[5, 5] // created on application launch due to not having access to the text boxes in global
             {
                 { txt00, txt01, txt02, txt03, txt04 },
                 { txt10, txt11, txt12, txt13, txt14 },
@@ -53,23 +54,31 @@ namespace CrosswordGame
 
         private void ShowHint() // Method for the Show Hint Button
         {
-            Random num1 = new Random();
-            Random num2 = new Random();
+            Random rand = new Random();
             do
             {
-                column = num1.Next(0, 5);
-                row = num2.Next(0, 5);
+                column = rand.Next(0, 5);
+                row = rand.Next(0, 5);
             } while (
                 !string.IsNullOrEmpty(textBoxes[row, column].Text)
                 || textBoxes[row, column].BackColor == Color.Black
             );
 
-            textBoxes[row, column].BackColor = Color.Yellow;
-            textBoxes[row, column].Text = Crossword[row, column];
+            hasAskedForHint = true;
+            ChangeTextboxStatus();
         }
 
-        private void ChangeTextboxStatus()  // thod that sets relevant text boxes to black or white
+        private void ChangeTextboxStatus() // method that sets relevant text boxes to black or white
         {
+            // changes textbox colour to yellow if asked for hint
+            if (hasAskedForHint)
+            {
+                hasAskedForHint = false;
+                textBoxes[row, column].BackColor = Color.Yellow;
+                textBoxes[row, column].Text = Crossword[row, column];
+                return;
+            }
+
             // juFo (2013) demonstrates how...
             for (int i = 0; i < Crossword.GetLength(0); i++)
             {
@@ -86,14 +95,8 @@ namespace CrosswordGame
                         textBoxes[i, j].BackColor = Color.White;
                         textBoxes[i, j].MaxLength = 1;
                     }
-                }
-            }
 
-            // checks if the entered letter is correct
-            for (int i = 0; i < Crossword.GetLength(0); i++)
-            {
-                for (int j = 0; j < Crossword.GetLength(1); j++)
-                {
+                    // checks if the entered letter is correct
                     string guess = textBoxes[i, j].Text.ToUpper();
                     textBoxes[i, j].Text = guess;
                     if (!string.IsNullOrEmpty(guess))
@@ -111,7 +114,7 @@ namespace CrosswordGame
             }
         }
 
-        private void Finish()   // Method for the finish button so say whether you've won or not
+        private void Finish() // Method for the finish button so say whether you've won or not
         {
             for (int i = 0; i < Crossword.GetLength(0); i++)
             {
