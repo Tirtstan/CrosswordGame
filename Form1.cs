@@ -55,13 +55,14 @@ namespace CrosswordGame
         private void ShowHint() // Method for the Show Hint Button
         {
             Random rand = new Random();
+            Color txtColor;
             do
             {
-                column = rand.Next(0, 5);
                 row = rand.Next(0, 5);
+                column = rand.Next(0, 5);
+                txtColor = textBoxes[row, column].BackColor;
             } while (
-                !string.IsNullOrEmpty(textBoxes[row, column].Text)
-                || textBoxes[row, column].BackColor == Color.Black
+                txtColor == Color.Yellow || txtColor == Color.Black || txtColor == Color.LightGreen
             );
 
             hasAskedForHint = true;
@@ -132,6 +133,7 @@ namespace CrosswordGame
                         {
                             textBoxes[i, j].BackColor = Color.PaleVioletRed;
                         }
+                        textBoxes[i, j].Text = Crossword[i, j];
                     }
                 }
             }
