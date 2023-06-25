@@ -1,6 +1,11 @@
 /*
-Our program has an array of textboxes and takes char inputs from the operator.
-The operator can then click the Check 
+*Our program has an array of textboxes and takes char inputs from the operator.
+*The operator can then click the Check Button to see if they have inputted the correct chars.
+    This is done by changing the colour of the textbox to green if it is correct or red if incorrect.
+*There is also a Show Hint Button that can be clicked to randomly select an empty textbox a add the correct char as
+    change the colour of the textbox to yellow.
+*Once the Operator is satisfied with their inputs they can click the Finish Button
+    This then causes our program to check if all the inputs are correct and if so it outputs a message to say whether you've won or not
 */
 using System;
 
