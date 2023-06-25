@@ -1,3 +1,7 @@
+/*
+Our program has an array of textboxes and takes char inputs from the operator.
+The operator can then click the Check 
+*/
 using System;
 
 namespace CrosswordGame
